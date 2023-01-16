@@ -1,5 +1,4 @@
 import dayjs, { OpUnitType, QUnitType } from 'dayjs';
-import JapaneseHolidays from 'japanese-holidays';
 import { DISCOUNT_TIME, DATE, MONTHS, TIMEZONE } from '../../constants/rules';
 import { badImplementationException, validationException } from './apiErrorHandler';
 import pluginTz from 'dayjs/plugin/timezone';
@@ -16,15 +15,9 @@ dayjs.extend(isSameOrAfter);
 dayjs.extend(isSameOrBefore);
 
 export const checkHoliday = (time: string) => {
-  if (JapaneseHolidays.isHolidayAt(new Date(time))) {
-    return true;
-  } else {
     if (dayjs(time).tz(TIMEZONE, true).day() === 0 || dayjs(time).tz(TIMEZONE, true).day() === 6) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+    return true;
+  } 
 };
 
 export const getTotalPrices = (

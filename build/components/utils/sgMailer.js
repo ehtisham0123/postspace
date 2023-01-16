@@ -1,9 +1,7 @@
 // import sgMail, { MailDataRequired } from '@sendgrid/mail';
 // import { SEND_GRID_API_KEY } from '../../middleware/env';
 // import { Logger } from '../../middleware/log4';
-
 // sgMail.setApiKey(SEND_GRID_API_KEY);
-
 // /**
 //  * @description Mail内容を元にメールを送信
 //  * @param message

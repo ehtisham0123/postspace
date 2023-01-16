@@ -7,5 +7,7 @@ const express_1 = __importDefault(require("express"));
 const auth_1 = __importDefault(require("./auth"));
 const router = express_1.default.Router();
 router.use('/auth', auth_1.default);
-// router.use('/product', productComponent);
+router.get("/", (req, res) => {
+    return res.send("Hello World");
+});
 exports.default = router;

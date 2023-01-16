@@ -17,4 +17,4 @@ const resetTokenSchema = new Schema(
 
 resetTokenSchema.plugin(mongoosePaginate)
 
-export const ResetToken = model<ResetTokenDocument>('ResetToken', resetTokenSchema) as PaginateModel<ResetTokenDocument>
+export const ResetToken = model<ResetTokenDocument>('ResetToken', resetTokenSchema);

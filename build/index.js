@@ -12,7 +12,6 @@ const app = (0, express_1.default)();
     (0, components_1.registerComponents)(app);
 })();
 const server = app.listen(process.env.PORT || 8081, function () {
-    // const port = server.address().port
     console.log("App started at port:", process.env.PORT || 8081);
 });
 exports.default = app;

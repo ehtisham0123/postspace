@@ -23,3 +23,29 @@ export type UserDocument = mongoose.Document & {
   deletedAt: Date | null;
   comparePassword: comparePasswordFunction;
 };
+
+export type AdminDocument = mongoose.Document & {
+
+  adminId: string;
+  userName: string;
+  password: string;
+  privilege: String;
+  deletedAt: Date | null;
+  comparePassword: comparePasswordFunction;
+  refreshToken: any;
+  token?: string;
+};
+
+export type ResetTokenDocument = mongoose.Document & {
+  resetTokenId: string;
+  jwt: string;
+  isRevoked: boolean;
+  type: string;
+  userId: string;
+};
+export type LineChannelAccessDocument = mongoose.Document & {
+  expires_in: string;
+  token_type: string;
+  channel_access_token: string;
+  key_id: string;
+};

@@ -36,4 +36,5 @@ export const getRefreshToken = (user:any) => {
   return refreshToken
 }
 
+export const  verifyAdmin = passport.authenticate("jwt-admin", { session: false }) 
 export const verifyUser = passport.authenticate("jwt-user", { session: false }) 

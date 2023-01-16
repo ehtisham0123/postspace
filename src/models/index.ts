@@ -1,4 +1,5 @@
-import { ResetToken } from './ResetToken'
-import { User } from './User'
+import { ResetToken } from "./ResetToken";
+import { User } from "./User";
+import { Admin } from "./Admin";
 
-export { User,ResetToken}
+export { Admin, User, ResetToken };

@@ -10,7 +10,6 @@ const app = express();
 })();
 
 const server = app.listen(process.env.PORT || 8081, function () {
-  // const port = server.address().port
   console.log("App started at port:", process.env.PORT || 8081);
 });
 

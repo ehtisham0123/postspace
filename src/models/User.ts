@@ -7,14 +7,8 @@ const passportLocalMongoose = require("passport-local-mongoose")
 
 import mongoosePaginate from 'mongoose-paginate-v2';
 
-export const Session = new Schema({
-  refreshToken: {
-    type: String,
-    default: "",
-  },
-})
+import { Session } from './Admin';
 
-export const SessionModel = model('Session', Session);
 
 
 
@@ -102,4 +96,4 @@ userSchema.set("toJSON", {
  userSchema.plugin(passportLocalMongoose)
 // userSchema.plugin(mongoosePaginate);
 
-export const User = model<UserDocument>('User', userSchema) as PaginateModel<UserDocument>;
+export const User = model<UserDocument>('User', userSchema);

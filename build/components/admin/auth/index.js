@@ -27,8 +27,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const express_validator_1 = require("express-validator");
+const auth_validation_1 = require("./auth.validation");
 const controller = __importStar(require("./auth.controller"));
+const passport = __importStar(require("../../utils/passport"));
+const validation_1 = require("../../utils/validation");
 const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
+const Authenticate_1 = require("../../utils/Authenticate");
 const accountLimit = (0, express_rate_limit_1.default)({
     windowMs: 60 * 60 * 1000,
     max: 5,
@@ -37,5 +42,13 @@ const accountLimit = (0, express_rate_limit_1.default)({
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 const router = express_1.default.Router();
-router.get("/login", controller.login);
+router.get("/", (req, res) => {
+    return res.status(200).json("Hello World");
+});
+// router.get('/session', passport.isAdminAuthenticated, controller.checkSession);
+router.post("/register", (0, express_validator_1.checkSchema)(auth_validation_1.REGISTER_ADMIN_SCHEMA), validation_1.checkValidation, controller.createAdmin);
+router.put("/login", (0, express_validator_1.checkSchema)(auth_validation_1.LOGIN_SCHEMA), validation_1.checkValidation, passport.adminAuthenticate, controller.login);
+// refresh token route
+router.post("/refreshToken", controller.refreshToken);
+router.put('/logout', Authenticate_1.verifyAdmin, controller.logout);
 exports.default = router;
